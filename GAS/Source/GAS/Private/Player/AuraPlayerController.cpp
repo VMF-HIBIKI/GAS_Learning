@@ -89,8 +89,11 @@ void AAuraPlayerController::BeginPlay()
 	/*获取本地增加输入系统（用于管理输入和输入上下文）并添加需要的上下文
 	 */
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
-	Subsystem->AddMappingContext(AuraContext , 0);
+	if (Subsystem)
+	{
+		Subsystem->AddMappingContext(AuraContext , 0);
+	}
+
 
 	//鼠标光标设置
 	bShowMouseCursor = true;
